@@ -13,7 +13,8 @@ public class  AppUserDTOMapper implements Function<AppUser, AppUserDTO> {
     public AppUserDTO apply(AppUser appUser) {
         return new AppUserDTO(
                 appUser.getUserName(),
-                appUser.getEmail()
+                appUser.getEmail(),
+                appUser.getPassword()
         );
     }
 }

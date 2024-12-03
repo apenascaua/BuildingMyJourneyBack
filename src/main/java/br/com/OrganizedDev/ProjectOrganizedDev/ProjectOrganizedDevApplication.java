@@ -10,4 +10,12 @@ public class ProjectOrganizedDevApplication {
 		SpringApplication.run(ProjectOrganizedDevApplication.class, args);
 	}
 
+    @SpringBootApplication
+    public static class LoginAuthApiApplication {
+
+        public static void main(String[] args) {
+            SpringApplication.run(LoginAuthApiApplication.class, args);
+        }
+
+    }
 }
