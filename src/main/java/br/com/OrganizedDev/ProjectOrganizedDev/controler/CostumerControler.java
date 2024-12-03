@@ -19,13 +19,11 @@ public class CostumerControler {
 
     @GetMapping("")
     public List<Costumer> getAll(){
-        System.out.println("Rodou o Get");
         return costumerService.getAllCostumers();
     }
 
     @GetMapping("/dto")
     public List<CostumerDTO> getAllCostumerFromDTO(){
-        System.out.println("Rodou o Get");
         return costumerService.getAllCostumersFromDTO();
     }
 
@@ -40,7 +38,6 @@ public class CostumerControler {
     }
     @PostMapping("")
     public Costumer create(@RequestBody Costumer costumer){
-        System.out.println("Rodou o Post");
         return costumerService.createCostumer(costumer);
     }
 
@@ -48,20 +45,17 @@ public class CostumerControler {
     public Costumer update(@PathVariable Long id, @RequestBody Costumer costumer) {
         costumer.setId(id);
         Optional<Costumer> updateCostumer = costumerService.updateCostumer(id, costumer);
-        System.out.println("Rodou o Put");
         return updateCostumer.get();
     }
 
     @GetMapping("/{id}")
     public Costumer getById(@PathVariable Long id){
         Costumer costumer = costumerService.getCostumerById(id).get();
-        System.out.println("Rodou o Get");
         return costumer;
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         costumerService.deleteCostumer(id);
-        System.out.println("Rodou o Delete");
     }
 }

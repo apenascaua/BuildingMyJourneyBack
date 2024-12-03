@@ -19,19 +19,16 @@ public class AppUserControler {
 
     @GetMapping("")
     public List<AppUser> getAll() {
-        System.out.println("Rodou o Get");
         return appuserService.getAllUsers();
     }
 
     @GetMapping("/dto")
     public List<AppUserDTO> getAllUserDTO() {
-        System.out.println("Rodou o Get");
         return appuserService.getAllUsersFromDTO();
     }
 
     @PostMapping("")
     public AppUser create(@RequestBody AppUser appuser) {
-        System.out.println("Rodou o Post");
         return appuserService.createUser(appuser);
     }
 
@@ -39,21 +36,18 @@ public class AppUserControler {
     public AppUser update(@PathVariable Long id, @RequestBody AppUser appuser) {
         appuser.setId(id);
         Optional<AppUser> updateAppUser = appuserService.updateUser(id, appuser);
-        System.out.println("Rodou o Put");
         return updateAppUser.get();
     }
 
     @GetMapping("/{id}")
     public AppUser getById(@PathVariable Long id) {
         AppUser appuser = appuserService.getUserById(id).get();
-        System.out.println("Rodou o Get");
         return appuser;
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         appuserService.deleteUser(id);
-        System.out.println("Rodou o Delete");
     }
 
     @GetMapping("/email")

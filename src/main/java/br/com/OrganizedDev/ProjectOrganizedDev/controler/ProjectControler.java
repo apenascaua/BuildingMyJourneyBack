@@ -18,19 +18,16 @@ public class ProjectControler {
 
     @GetMapping("")
     public List<Project> getAll() {
-        System.out.println("Rodou o Get");
         return projectService.getAllProjects();
     }
 
     @GetMapping("/dto")
     public List<ProjectDTO> getAllProjectDTO() {
-        System.out.println("Rodou o Get");
         return projectService.getAllProjectsFromDTO();
     }
 
     @PostMapping("")
     public Project create(@RequestBody Project project) {
-        System.out.println("Rodou o Post");
         if (project.getCostumer() == null || project.getCostumer().getId() == null) {
             throw new RuntimeException("Costumer ID must be provided");
         }
@@ -41,14 +38,12 @@ public class ProjectControler {
     public Project update(@PathVariable Long id, @RequestBody Project project) {
         project.setId(id);
         Optional<Project> updatedProject = projectService.updateProject(id, project);
-        System.out.println("Rodou o Put");
         return updatedProject.orElseThrow(() -> new RuntimeException("Project not found"));
     }
 
     @GetMapping("/{id}")
     public Project getById(@PathVariable Long id) {
         Project project = projectService.getProjectById(id).orElseThrow(() -> new RuntimeException("Project not found"));
-        System.out.println("Rodou o Get");
         return project;
     }
 
@@ -58,7 +53,6 @@ public class ProjectControler {
         if (!deleted) {
             throw new RuntimeException("Project not found");
         }
-        System.out.println("Rodou o Delete");
     }
     @GetMapping("/costumers/{id}")
     public List<Project> getProjectsByCostumerId(@PathVariable Long id) {
