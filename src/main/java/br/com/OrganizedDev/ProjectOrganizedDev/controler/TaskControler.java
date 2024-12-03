@@ -58,7 +58,7 @@ public class TaskControler {
     public List<Task> getTaskByProjectId(@PathVariable Long id) {
         return taskService.getTaskByProjectId(id);
     }
-    @PutMapping("/{id}/status")
+    @PatchMapping("/{id}/status")
     public void updateTaskStatus(@PathVariable (value = "id") Long id, @RequestBody Status status) {
         taskService.updateTaskStatus(id, status);
     }
